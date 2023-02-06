@@ -1,12 +1,13 @@
 import './App.css';
 import { type ReactElement } from 'react';
+import { AppRouter } from './router/AppRouter';
 
-function App(): ReactElement {
+export const App = (): ReactElement => {
   return (
     <div className="App">
-      <h1>Vite + React</h1>
+      <AppRouter />
     </div>
   );
-}
+};
 
 export default App;
