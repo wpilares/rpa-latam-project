@@ -1,4 +1,3 @@
-import './App.css';
 import { type ReactElement } from 'react';
 import { AppRouter } from './router/AppRouter';
 
