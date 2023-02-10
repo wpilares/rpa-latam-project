@@ -1,13 +1,20 @@
 import { type ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/navBar.scss';
-import icon from '../../assets/hamburger_icon.svg';
+import './navBar.scss';
+import icon from '../../../assets/hamburger_icon.svg';
 
 export const NavBar = (): ReactElement => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <nav className={`navbar ${mobileOpen ? 'active' : ''}`}>
+      <button
+        className="navbar__button"
+        onClick={() => {
+          setMobileOpen(!mobileOpen);
+        }}>
+        <img src={icon} alt="15px" />
+      </button>
       <ul
         className={mobileOpen ? 'navbar__listmobile' : 'navbar__list'}
         onClick={() => {
@@ -32,13 +39,6 @@ export const NavBar = (): ReactElement => {
           Health
         </Link>
       </ul>
-      <button
-        className="navbar__button"
-        onClick={() => {
-          setMobileOpen(!mobileOpen);
-        }}>
-        <img src={icon} alt="15px" />
-      </button>
     </nav>
   );
 };

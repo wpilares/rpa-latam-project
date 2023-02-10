@@ -1,5 +1,5 @@
 import { type ReactElement } from 'react';
-import '../../styles/headerInfo.scss';
+import './headerInfo.scss';
 import { Link } from 'react-router-dom';
 
 export const HeaderInfo = (): ReactElement => {
@@ -15,9 +15,9 @@ export const HeaderInfo = (): ReactElement => {
           </Link>
         </ul>
       </nav>
-      <div className="title">
+      <Link className="title" to="/">
         Noti<span className="title__text">Scope</span>
-      </div>
+      </Link>
     </>
   );
 };

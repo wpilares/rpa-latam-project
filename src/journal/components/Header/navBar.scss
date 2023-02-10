@@ -1,0 +1,78 @@
+@import '../../../styles/mixins';
+@import "../../../styles/variables";
+
+.navbar {
+  background-color: $navBarColor;
+  color: #fff;
+  display: block;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+
+  &__list {
+    display: none;
+  }
+
+  &__listmobile {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 20px;
+    padding: 0;
+    top: 10%;
+    transition: all 0.5s ease-out;
+    width: 100%;
+  }
+
+  &__item {
+    margin-bottom: 20px;
+    font-family: serif;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  &__button {
+    display: block;
+    background-color: $navBarColor;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+  }
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+@include customMinBreakPoint(1024) {
+  .navbar {
+    height: 49px;
+    display: flex;
+    align-items: center;
+
+    &__list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__item {
+      margin: 0 20px;
+    }
+
+    &__button {
+      display: none;
+    }
+
+    &__listmobile {
+      display: none;
+    }
+  }
+}

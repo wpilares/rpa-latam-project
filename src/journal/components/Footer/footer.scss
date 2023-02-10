@@ -1,0 +1,45 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.footer {
+  background-color: $footerColor;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+
+  &__top {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 20px;
+
+    @include customMinBreakPoint(1024) {
+      justify-content: space-around;
+      padding: 40px 254px;
+      flex-wrap: nowrap;
+    }
+
+    &__left, &__center, &__right {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 20px;
+
+      @include customMinBreakPoint(1024) {
+        width: 33.33%;
+        text-align: left;
+      }
+
+      &__text {
+        margin: 0;
+      }
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}

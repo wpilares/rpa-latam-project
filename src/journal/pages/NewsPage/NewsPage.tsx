@@ -1,9 +1,6 @@
 import { type ReactElement, useEffect, useState } from 'react';
 import axios from 'axios';
-
-import { Footer } from '../components/Footer';
-import '../../styles/newsPage.scss';
-import { Header } from '../components';
+import './newsPage.scss';
 
 interface Article {
   title: string;
@@ -46,7 +43,6 @@ export const NewsPage = (): ReactElement => {
 
   return (
     <div>
-      <Header />
       <div className="news-page">
         <h2 className="news-page__header">{article?.title}</h2>
         <p className="news-page__description">{article?.excerpt}</p>
@@ -64,7 +60,6 @@ export const NewsPage = (): ReactElement => {
           Read more
         </a>
       </div>
-      <Footer />
     </div>
   );
 };
