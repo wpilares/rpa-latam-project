@@ -1,6 +1,7 @@
 import { type ReactElement } from 'react';
-import { NavBar } from './NavBar';
+
 import { HeaderInfo } from './HeaderInfo';
+import { NavBar } from './NavBar';
 
 export const Header = (): ReactElement => {
   return (
