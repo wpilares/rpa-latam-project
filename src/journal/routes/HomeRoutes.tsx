@@ -7,7 +7,7 @@ export const HomeRoutes = (): ReactElement => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/news" element={<NewsPage />}></Route>
-      <Route path="/*" element={<Navigate to="/" />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
