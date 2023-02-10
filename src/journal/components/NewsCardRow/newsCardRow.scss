@@ -1,0 +1,64 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.news-card-row {
+  display: flex;
+  flex-direction: column;
+  max-width: 288px;
+  // min-height: 26.875rem;
+  border: 1px solid;
+
+  @include customMinBreakPoint(1024) {
+    flex-direction: row;
+    max-width: 474px;
+    max-height: 209px;
+  }
+
+  &__image-content {
+    @include customMinBreakPoint(1024) {
+      display: flex;
+      flex: 1 1 42%;
+    }
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+
+    @include customMinBreakPoint(1024) {
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    padding: 12px;
+
+    @include customMinBreakPoint(1024) {
+      flex: 1 1 58%;
+    }
+  }
+
+  &__title {
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    font-weight: $blackFontWeight;
+    margin: 0;
+    // font-family: 'Noto Serif';
+  }
+
+  &__description {
+    font-size: 15px;
+    margin: 12px 0;
+    color: $descriptionColor;
+    line-height: $baseLineHeight;
+    font-weight: $mediumFontWeight;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    line-height: $baseLineHeight;
+    font-size: 12px;
+  }
+}

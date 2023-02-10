@@ -1,0 +1,43 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 288px;
+  // min-height: 26.875rem;
+
+  @include customMinBreakPoint(1024) {
+    max-height: 26.875rem;
+    max-width: 19.375rem;
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+  }
+  &__content {
+    padding: 12px;
+  }
+  &__title {
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    font-weight: $blackFontWeight;
+    margin: 0;
+    // font-family: 'Noto Serif';
+  }
+  &__description {
+    font-size: 15px;
+    margin: 12px 0;
+    color: $descriptionColor;
+    line-height: $baseLineHeight;
+    font-weight: $mediumFontWeight;
+  }
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    line-height: $baseLineHeight;
+    font-size: 12px;
+  }
+}
