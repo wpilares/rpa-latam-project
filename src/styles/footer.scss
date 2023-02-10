@@ -1,0 +1,42 @@
+.footer {
+  background-color: black;
+  color: white;
+
+  &__top {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 254px;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+      padding: 20px;
+
+      &__left, &__center, &__right {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+
+      &__bottom {
+        width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+    }
+
+    &__left, &__center, &__right {
+      width: 33.33%;
+
+      &__text {
+        margin: 0;
+      }
+
+    }
+  }
+
+  &__bottom {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}
