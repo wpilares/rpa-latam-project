@@ -31,7 +31,7 @@ export const NewsPage = (): ReactElement => {
           headers: {
             'x-api-key': 'pzflooiZkigZv3RHkvyQWg6cm9vbbEjkbqkIU4of_D8',
           },
-        }
+        },
       );
       setArticle(response.data.articles[0]);
     };

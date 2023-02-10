@@ -12,8 +12,7 @@ export const NavBar = (): ReactElement => {
         className={mobileOpen ? 'navbar__listmobile' : 'navbar__list'}
         onClick={() => {
           setMobileOpen(false);
-        }}
-      >
+        }}>
         <Link className="navbar__item" to="/">
           Entertainment
         </Link>
@@ -37,8 +36,7 @@ export const NavBar = (): ReactElement => {
         className="navbar__button"
         onClick={() => {
           setMobileOpen(!mobileOpen);
-        }}
-      >
+        }}>
         <img src={icon} alt="15px" />
       </button>
     </nav>
