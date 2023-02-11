@@ -2,9 +2,7 @@ import { type ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/register.scss';
 
-export const RegisterPage = (props: {
-  onFormSwitch: (arg0: string) => void;
-}): ReactElement => {
+export const RegisterPage = (): ReactElement => {
   return (
     <div className="auth-form-container">
       <h2>Nuevo Registro</h2>
@@ -55,12 +53,7 @@ export const RegisterPage = (props: {
         {' '}
         Ya se encuentra registrado? Haga clic aquí:
         <Link to="/auth/login">
-          <button
-            className="link-btn"
-            onClick={() => {
-              props.onFormSwitch('login');
-            }}
-          >
+          <button className="link-btn" onClick={() => {}}>
             Iniciar Sesión
           </button>
         </Link>
