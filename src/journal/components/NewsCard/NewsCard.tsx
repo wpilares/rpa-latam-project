@@ -3,7 +3,6 @@ import './newsCard.scss';
 
 interface Props {
   title: string;
-  description: string;
   author: string;
   date: string;
   newsImage: string;
@@ -11,7 +10,6 @@ interface Props {
 
 export const NewsCard: React.FC<Props> = ({
   title,
-  description,
   author,
   date,
   newsImage,
@@ -23,7 +21,6 @@ export const NewsCard: React.FC<Props> = ({
       </div>
       <div className="news-card__content">
         <h3 className="news-card__title">{title}</h3>
-        <p className="news-card__description">{description}</p>
         <div className="news-card__meta">
           <small className="news-card__author">{author}</small>
           <small>

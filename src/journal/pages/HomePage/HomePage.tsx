@@ -20,104 +20,49 @@ export const HomePage = (): ReactElement => {
   const [technologyNews, setTechnologyNews] = useState<News[]>([]);
   const [healthNews, setHealthNews] = useState<News[]>([]);
 
-  const retryFetch = async (
-    fetchFunction: () => Promise<void>,
-    maxRetries: number,
-    currentRetry: number = 0,
-  ): Promise<void> => {
-    try {
-      await fetchFunction();
-    } catch (error) {
-      if (currentRetry < maxRetries) {
-        // esperar un tiempo antes de hacer la siguiente petición
-        await new Promise((resolve) => setTimeout(resolve, 6 * 1000));
-        retryFetch(fetchFunction, maxRetries, currentRetry + 1)
-          .then(() => {
-            console.log('Success');
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      } else {
-        console.error(error);
-      }
-    }
-  };
-
   useEffect(() => {
-    retryFetch(async () => {
-      await fetchNews(setBitcoinNews, 'Bitcoin', '1')
-        .then(() => {
-          console.log('Successfully fetched Bitcoin news');
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, 5)
+    fetchNews(setBitcoinNews, 'Bitcoin', '1')
       .then(() => {
-        console.log('Success');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+        console.log('Successfully fetched Bitcoin news');
+        setTimeout(() => {
+          fetchNews(setEntertainmentNews, 'entertainment', '3')
+            .then(() => {
+              console.log('Successfully fetched Entertainment news');
 
-    retryFetch(async () => {
-      await fetchNews(setEntertainmentNews, 'entertainment', '3')
-        .then(() => {
-          console.log('Successfully fetched Entertainment news');
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, 5)
-      .then(() => {
-        console.log('Success');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    retryFetch(async () => {
-      await fetchNews(setSportsNews, 'sport', '6')
-        .then(() => {
-          console.log('Successfully fetched Sports news');
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, 5)
-      .then(() => {
-        console.log('Success');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+              setTimeout(() => {
+                fetchNews(setSportsNews, 'sport', '6')
+                  .then(() => {
+                    console.log('Successfully fetched Sports news');
 
-    retryFetch(async () => {
-      await fetchNews(setTechnologyNews, 'technology', '6')
-        .then(() => {
-          console.log('Successfully fetched Technology news');
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, 5)
-      .then(() => {
-        console.log('Success');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    retryFetch(async () => {
-      await fetchNews(setHealthNews, 'health', '6')
-        .then(() => {
-          console.log('Successfully fetched Health news');
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, 5)
-      .then(() => {
-        console.log('Success');
+                    setTimeout(() => {
+                      fetchNews(setTechnologyNews, 'tech', '6')
+                        .then(() => {
+                          console.log('Successfully fetched Technology news');
+
+                          setTimeout(() => {
+                            fetchNews(setHealthNews, 'health', '6')
+                              .then(() => {
+                                console.log('Successfully fetched Health news');
+                              })
+                              .catch((error) => {
+                                console.error(error);
+                              });
+                          }, 1000);
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                        });
+                    }, 1000);
+                  })
+                  .catch((error) => {
+                    console.error(error);
+                  });
+              }, 1000);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }, 1000);
       })
       .catch((error) => {
         console.error(error);
@@ -157,7 +102,6 @@ export const HomePage = (): ReactElement => {
                   key={news.title}
                   newsImage={news.media}
                   title={news.title}
-                  description={news.excerpt}
                   date={news.published_date}
                   author={news.author}
                 />
@@ -172,7 +116,6 @@ export const HomePage = (): ReactElement => {
                   key={news.title}
                   newsImage={news.media}
                   title={news.title}
-                  description={news.excerpt}
                   date={news.published_date}
                   author={news.author}
                 />
@@ -188,7 +131,6 @@ export const HomePage = (): ReactElement => {
                     key={news.title}
                     newsImage={news.media}
                     title={news.title}
-                    description={news.excerpt}
                     date={news.published_date}
                     author={news.author}
                   />
@@ -203,7 +145,6 @@ export const HomePage = (): ReactElement => {
                     key={news.title}
                     newsImage={news.media}
                     title={news.title}
-                    description={news.excerpt}
                     date={news.published_date}
                     author={news.author}
                   />
