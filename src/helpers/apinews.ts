@@ -20,7 +20,7 @@ export const getNews = async (query: string, page: string): Promise<News[]> => {
       page_size: page,
     },
     headers: {
-      'x-api-key': 'iQuPkAZDcK381zdRit27akxjP4NKxs5EGdZbfkQk7sI',
+      'x-api-key': '5S6IcMCTmPoo1Bxab8bIt41gJSMbFiC9mKCEhS_eDpE',
     },
   });
   return response.data.articles;
