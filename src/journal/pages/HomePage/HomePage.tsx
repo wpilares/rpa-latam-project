@@ -1,7 +1,5 @@
 import { type ReactElement } from 'react';
 import './homePage.scss';
-import { Header } from '../../components';
-import { Footer } from '../../components/Footer';
 import { NewsCard } from '../../components/NewsCard/NewsCard';
 import { NewsCardRow } from '../../components/NewsCardRow/NewsCardRow';
 
@@ -65,7 +63,6 @@ export const HomePage = (): ReactElement => {
 
   return (
     <>
-      <Header />
       <div className="wrapper">
         <main className="main">
           <article className="hero">
@@ -160,7 +157,6 @@ export const HomePage = (): ReactElement => {
           </div>
         </main>
       </div>
-      <Footer />
     </>
   );
 };
