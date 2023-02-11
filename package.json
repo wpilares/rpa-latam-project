@@ -15,7 +15,6 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-modal-login": "^2.0.7",
     "react-router-dom": "6"
   },
   "devDependencies": {
