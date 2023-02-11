@@ -78,7 +78,7 @@ export const HomePage = (): ReactElement => {
             <Link
               to={`/news/${news.title}`}
               key={news._id}
-              style={{ textDecoration: 'none' }}>
+              style={{ textDecoration: 'none', color: 'inherit' }}>
               <article className="hero" key={news.title}>
                 <div className="hero__content">
                   <h3 className="hero__title">{news.title}</h3>
@@ -107,7 +107,7 @@ export const HomePage = (): ReactElement => {
                 <Link
                   to={`/news/${news.title}`}
                   key={news._id}
-                  style={{ textDecoration: 'none' }}>
+                  style={{ textDecoration: 'none', color: 'inherit' }}>
                   <NewsCard
                     key={news.title}
                     newsImage={news.media}
@@ -126,7 +126,7 @@ export const HomePage = (): ReactElement => {
                 <Link
                   to={`/news/${news.title}`}
                   key={news._id}
-                  style={{ textDecoration: 'none' }}>
+                  style={{ textDecoration: 'none', color: 'inherit' }}>
                   <NewsCard
                     key={news.title}
                     newsImage={news.media}
@@ -146,7 +146,7 @@ export const HomePage = (): ReactElement => {
                   <Link
                     to={`/news/${news.title}`}
                     key={news._id}
-                    style={{ textDecoration: 'none' }}>
+                    style={{ textDecoration: 'none', color: 'inherit' }}>
                     <NewsCardRow
                       key={news.title}
                       newsImage={news.media}
@@ -165,7 +165,7 @@ export const HomePage = (): ReactElement => {
                   <Link
                     to={`/news/${news.title}`}
                     key={news._id}
-                    style={{ textDecoration: 'none' }}>
+                    style={{ textDecoration: 'none', color: 'inherit' }}>
                     <NewsCardRow
                       key={news.title}
                       newsImage={news.media}
