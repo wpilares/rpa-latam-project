@@ -6,7 +6,7 @@ export const HomeRoutes = (): ReactElement => {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/news" element={<NewsPage />}></Route>
+      <Route path="/news/:id" element={<NewsPage />}></Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );

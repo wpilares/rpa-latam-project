@@ -8,6 +8,7 @@ export interface News {
   published_date: string;
   link: string;
   media: string;
+  _id: string;
 }
 
 export const getNews = async (query: string, page: string): Promise<News[]> => {
@@ -19,7 +20,7 @@ export const getNews = async (query: string, page: string): Promise<News[]> => {
       page_size: page,
     },
     headers: {
-      'x-api-key': '-nqaGI1dl5wS2i8bnx0l5pRFqDWmnFwoAr7cXqM9hcs',
+      'x-api-key': 'iQuPkAZDcK381zdRit27akxjP4NKxs5EGdZbfkQk7sI',
     },
   });
   return response.data.articles;
