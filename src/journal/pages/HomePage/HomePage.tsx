@@ -2,5 +2,5 @@ import { type ReactElement } from 'react';
 import './homePage.scss';
 
 export const HomePage = (): ReactElement => {
-  return <>HomePage</>;
+  return <h1>Home Page</h1>;
 };
