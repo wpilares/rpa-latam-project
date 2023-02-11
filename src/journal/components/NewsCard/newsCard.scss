@@ -7,13 +7,22 @@
   max-width: 288px;
   margin: auto;
   @include customMinBreakPoint(1024) {
-    max-height: 26.875rem;
+    min-height: 26.875rem;
     max-width: 19.375rem;
+    margin: initial;
+  }
+
+  &__image-container{
+ @include customMinBreakPoint(1024) {
+    height: 225px;
+    display: flex;
+  }
   }
 
   &__image {
     display: flex;
     width: 100%;
+    object-fit: cover;
   }
   &__content {
     padding: 12px;
