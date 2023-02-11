@@ -1,12 +1,15 @@
 import { type ReactElement, useEffect, useState } from 'react';
 import './newsPage.scss';
 import { getNews, type News } from '../../../helpers/apinews';
+import { useParams } from 'react-router-dom';
 
 export const NewsPage = (): ReactElement => {
+  const { id } = useParams();
+  const ID = (id ?? '').toString();
   const [news, setNews] = useState<News[]>([]);
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const articles = await getNews('Bitcoin', '1');
+      const articles = await getNews(ID, '1');
       setNews(articles);
     };
     fetchData()

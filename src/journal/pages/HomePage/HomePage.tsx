@@ -3,6 +3,7 @@ import './homePage.scss';
 import { NewsCard } from '../../components/NewsCard/NewsCard';
 import { NewsCardRow } from '../../components/NewsCardRow/NewsCardRow';
 import { getNews, type News } from '../../../helpers/apinews';
+import { Link } from 'react-router-dom';
 
 const fetchNews = async (
   setNews: (news: News[]) => void,
@@ -74,37 +75,47 @@ export const HomePage = (): ReactElement => {
       <div className="wrapper">
         <main className="main">
           {bitcoinNews.map((news) => (
-            <article className="hero" key={news.title}>
-              <div className="hero__content">
-                <h3 className="hero__title">{news.title}</h3>
-                <p className="hero__description">{news.excerpt}</p>
-                <div className="hero__meta">
-                  <small className="hero__author">{news.author}</small>
-                  <small>
-                    <time className="hero__date">{news.published_date}</time>
-                  </small>
+            <Link
+              to={`/news/${news.title}`}
+              key={news._id}
+              style={{ textDecoration: 'none' }}>
+              <article className="hero" key={news.title}>
+                <div className="hero__content">
+                  <h3 className="hero__title">{news.title}</h3>
+                  <p className="hero__description">{news.excerpt}</p>
+                  <div className="hero__meta">
+                    <small className="hero__author">{news.author}</small>
+                    <small>
+                      <time className="hero__date">{news.published_date}</time>
+                    </small>
+                  </div>
                 </div>
-              </div>
-              <div className="hero__image-container">
-                <img
-                  src={news.media}
-                  alt={news.title}
-                  className="hero__image"
-                />
-              </div>
-            </article>
+                <div className="hero__image-container">
+                  <img
+                    src={news.media}
+                    alt={news.title}
+                    className="hero__image"
+                  />
+                </div>
+              </article>
+            </Link>
           ))}
           <section className="section">
             <h2 className="section__title">Entertainment</h2>
             <div className="content-news">
               {entertainmentNews.map((news) => (
-                <NewsCard
-                  key={news.title}
-                  newsImage={news.media}
-                  title={news.title}
-                  date={news.published_date}
-                  author={news.author}
-                />
+                <Link
+                  to={`/news/${news.title}`}
+                  key={news._id}
+                  style={{ textDecoration: 'none' }}>
+                  <NewsCard
+                    key={news.title}
+                    newsImage={news.media}
+                    title={news.title}
+                    date={news.published_date}
+                    author={news.author}
+                  />
+                </Link>
               ))}
             </div>
           </section>
@@ -112,13 +123,18 @@ export const HomePage = (): ReactElement => {
             <h2 className="section__title">Sports</h2>
             <div className="content-news">
               {sportsNews.map((news) => (
-                <NewsCard
-                  key={news.title}
-                  newsImage={news.media}
-                  title={news.title}
-                  date={news.published_date}
-                  author={news.author}
-                />
+                <Link
+                  to={`/news/${news.title}`}
+                  key={news._id}
+                  style={{ textDecoration: 'none' }}>
+                  <NewsCard
+                    key={news.title}
+                    newsImage={news.media}
+                    title={news.title}
+                    date={news.published_date}
+                    author={news.author}
+                  />
+                </Link>
               ))}
             </div>
           </section>
@@ -127,13 +143,18 @@ export const HomePage = (): ReactElement => {
               <h2 className="section__title">Technology</h2>
               <div className="content-news">
                 {technologyNews.map((news) => (
-                  <NewsCardRow
-                    key={news.title}
-                    newsImage={news.media}
-                    title={news.title}
-                    date={news.published_date}
-                    author={news.author}
-                  />
+                  <Link
+                    to={`/news/${news.title}`}
+                    key={news._id}
+                    style={{ textDecoration: 'none' }}>
+                    <NewsCardRow
+                      key={news.title}
+                      newsImage={news.media}
+                      title={news.title}
+                      date={news.published_date}
+                      author={news.author}
+                    />
+                  </Link>
                 ))}
               </div>
             </section>
@@ -141,13 +162,18 @@ export const HomePage = (): ReactElement => {
               <h2 className="section__title">Health</h2>
               <div className="content-news">
                 {healthNews.map((news) => (
-                  <NewsCardRow
-                    key={news.title}
-                    newsImage={news.media}
-                    title={news.title}
-                    date={news.published_date}
-                    author={news.author}
-                  />
+                  <Link
+                    to={`/news/${news.title}`}
+                    key={news._id}
+                    style={{ textDecoration: 'none' }}>
+                    <NewsCardRow
+                      key={news.title}
+                      newsImage={news.media}
+                      title={news.title}
+                      date={news.published_date}
+                      author={news.author}
+                    />
+                  </Link>
                 ))}
               </div>
             </section>
