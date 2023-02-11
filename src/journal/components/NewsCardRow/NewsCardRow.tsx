@@ -16,12 +16,12 @@ export const NewsCardRow: React.FC<Props> = ({
   newsImage,
 }) => {
   return (
-    <div className="news-card-row">
+    <article className="news-card-row">
       <div className="news-card-row__image-content">
         <img src={newsImage} alt="" className="news-card-row__image" />
       </div>
       <div className="news-card-row__content">
-        <h2 className="news-card-row__title">{title}</h2>
+        <h3 className="news-card-row__title">{title}</h3>
         <p className="news-card-row__description">{description}</p>
         <div className="news-card-row__meta">
           <small className="news-card-row__author">{author}</small>
@@ -34,6 +34,6 @@ export const NewsCardRow: React.FC<Props> = ({
           </small>
         </div>
       </div>
-    </div>
+    </article>
   );
 };

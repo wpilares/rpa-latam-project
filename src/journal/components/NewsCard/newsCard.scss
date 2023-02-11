@@ -5,8 +5,7 @@
   display: flex;
   flex-direction: column;
   max-width: 288px;
-  // min-height: 26.875rem;
-
+  margin: auto;
   @include customMinBreakPoint(1024) {
     max-height: 26.875rem;
     max-width: 19.375rem;
