@@ -1,123 +1,179 @@
-import { type ReactElement } from 'react';
+import { type ReactElement, useEffect, useState } from 'react';
 import './homePage.scss';
 import { NewsCard } from '../../components/NewsCard/NewsCard';
 import { NewsCardRow } from '../../components/NewsCardRow/NewsCardRow';
+import { getNews, type News } from '../../../helpers/apinews';
+
+const fetchNews = async (
+  setNews: (news: News[]) => void,
+  query: string,
+  page: string,
+): Promise<void> => {
+  const articles = await getNews(query, page);
+  setNews(articles);
+};
 
 export const HomePage = (): ReactElement => {
-  const news = [
-    {
-      img: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1239&q=80',
-      title:
-        'Elon dodges liability, Ford falters and Rivian lays off more workers',
-      description:
-        'This week in the Station, a weekly transportation newsletter, Elon Musk dodges liability, Rivian lays off workers and Ford falters',
-      author: 'Kirsten snbdubu',
-      dateNews: '06-02-2023',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1239&q=80',
-      title:
-        'Elon dodges liability, Ford falters and Rivian lays off more workers',
-      description:
-        'This week in the Station, a weekly transportation newsletter, Elon Musk dodges liability, Rivian lays off workers and Ford falters',
-      author: 'Kirsten Korosec',
-      dateNews: '06-02-2023',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1239&q=80',
-      title:
-        'Elon dodges liability, Ford falters and Rivian lays off more workers',
-      description:
-        'This week in the Station, a weekly transportation newsletter, Elon Musk dodges liability, Rivian lays off workers and Ford falters',
-      author: 'Kirsten Korosec',
-      dateNews: '06-02-2023',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1239&q=80',
-      title:
-        'Elon dodges liability, Ford falters and Rivian lays off more workers',
-      description:
-        'This week in the Station, a weekly transportation newsletter, Elon Musk dodges liability, Rivian lays off workers and Ford falters',
-      author: 'Kirsten Korosec',
-      dateNews: '06-02-2023',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1239&q=80',
-      title:
-        'Elon dodges liability, Ford falters and Rivian lays off more workers',
-      description:
-        'This week in the Station, a weekly transportation newsletter, Elon Musk dodges liability, Rivian lays off workers and Ford falters',
-      author: 'Kirsten Korosec',
-      dateNews: '06-02-2023',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1239&q=80',
-      title:
-        'Elon dodges liability, Ford falters and Rivian lays off more workers',
-      description:
-        'This week in the Station, a weekly transportation newsletter, Elon Musk dodges liability, Rivian lays off workers and Ford falters',
-      author: 'Kirsten Korosec',
-      dateNews: '06-02-2023',
-    },
-  ];
+  const [bitcoinNews, setBitcoinNews] = useState<News[]>([]);
+  const [entertainmentNews, setEntertainmentNews] = useState<News[]>([]);
+  const [sportsNews, setSportsNews] = useState<News[]>([]);
+  const [technologyNews, setTechnologyNews] = useState<News[]>([]);
+  const [healthNews, setHealthNews] = useState<News[]>([]);
+
+  const retryFetch = async (
+    fetchFunction: () => Promise<void>,
+    maxRetries: number,
+    currentRetry: number = 0,
+  ): Promise<void> => {
+    try {
+      await fetchFunction();
+    } catch (error) {
+      if (currentRetry < maxRetries) {
+        // esperar un tiempo antes de hacer la siguiente petición
+        await new Promise((resolve) => setTimeout(resolve, 6 * 1000));
+        retryFetch(fetchFunction, maxRetries, currentRetry + 1)
+          .then(() => {
+            console.log('Success');
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      } else {
+        console.error(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    retryFetch(async () => {
+      await fetchNews(setBitcoinNews, 'Bitcoin', '1')
+        .then(() => {
+          console.log('Successfully fetched Bitcoin news');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 5)
+      .then(() => {
+        console.log('Success');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    retryFetch(async () => {
+      await fetchNews(setEntertainmentNews, 'entertainment', '3')
+        .then(() => {
+          console.log('Successfully fetched Entertainment news');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 5)
+      .then(() => {
+        console.log('Success');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    retryFetch(async () => {
+      await fetchNews(setSportsNews, 'sport', '6')
+        .then(() => {
+          console.log('Successfully fetched Sports news');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 5)
+      .then(() => {
+        console.log('Success');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    retryFetch(async () => {
+      await fetchNews(setTechnologyNews, 'technology', '6')
+        .then(() => {
+          console.log('Successfully fetched Technology news');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 5)
+      .then(() => {
+        console.log('Success');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    retryFetch(async () => {
+      await fetchNews(setHealthNews, 'health', '6')
+        .then(() => {
+          console.log('Successfully fetched Health news');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 5)
+      .then(() => {
+        console.log('Success');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <>
       <div className="wrapper">
         <main className="main">
-          <article className="hero">
-            <div className="hero__content">
-              <h3 className="hero__title">
-                Elon dodges liability, Ford falters and Rivian lays off more
-                workers
-              </h3>
-              <p className="hero__description">
-                This week in the Station, a weekly transportation newsletter,
-                Elon Musk dodges liability, Rivian lays off workers and Ford
-                falters
-              </p>
-              <div className="hero__meta">
-                <small className="hero__author">Kirsten Korosec</small>
-                <small>
-                  <time dateTime="2023-02-06T19:42:58Z" className="hero__date">
-                    06-02-2023
-                  </time>
-                </small>
+          {bitcoinNews.map((news) => (
+            <article className="hero" key={news.title}>
+              <div className="hero__content">
+                <h3 className="hero__title">{news.title}</h3>
+                <p className="hero__description">{news.excerpt}</p>
+                <div className="hero__meta">
+                  <small className="hero__author">{news.author}</small>
+                  <small>
+                    <time className="hero__date">{news.published_date}</time>
+                  </small>
+                </div>
               </div>
-            </div>
-            <div className="hero__image-container">
-              <img
-                src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1239&q=80"
-                alt=""
-                className="hero__image"
-              />
-            </div>
-          </article>
+              <div className="hero__image-container">
+                <img
+                  src={news.media}
+                  alt={news.title}
+                  className="hero__image"
+                />
+              </div>
+            </article>
+          ))}
           <section className="section">
-            <h2 className="section__title">Business</h2>
+            <h2 className="section__title">Entertainment</h2>
             <div className="content-news">
-              {news.map((news, idx) => (
+              {entertainmentNews.map((news) => (
                 <NewsCard
-                  key={idx}
-                  newsImage={news.img}
+                  key={news.title}
+                  newsImage={news.media}
                   title={news.title}
-                  description={news.description}
-                  date={news.date}
+                  description={news.excerpt}
+                  date={news.published_date}
                   author={news.author}
                 />
               ))}
             </div>
           </section>
           <section className="section">
-            <h2 className="section__title">Business</h2>
+            <h2 className="section__title">Sports</h2>
             <div className="content-news">
-              {news.map((news, idx) => (
+              {sportsNews.map((news) => (
                 <NewsCard
-                  key={idx}
-                  newsImage={news.img}
+                  key={news.title}
+                  newsImage={news.media}
                   title={news.title}
-                  description={news.description}
-                  date={news.date}
+                  description={news.excerpt}
+                  date={news.published_date}
                   author={news.author}
                 />
               ))}
@@ -125,30 +181,30 @@ export const HomePage = (): ReactElement => {
           </section>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <section className="section">
-              <h2 className="section__title">Business</h2>
+              <h2 className="section__title">Technology</h2>
               <div className="content-news">
-                {news.map((news, idx) => (
+                {technologyNews.map((news) => (
                   <NewsCardRow
-                    key={idx}
-                    newsImage={news.img}
+                    key={news.title}
+                    newsImage={news.media}
                     title={news.title}
-                    description={news.description}
-                    date={news.date}
+                    description={news.excerpt}
+                    date={news.published_date}
                     author={news.author}
                   />
                 ))}
               </div>
             </section>
             <section className="section">
-              <h2 className="section__title">Business</h2>
+              <h2 className="section__title">Health</h2>
               <div className="content-news">
-                {news.map((news, idx) => (
+                {healthNews.map((news) => (
                   <NewsCardRow
-                    key={idx}
-                    newsImage={news.img}
+                    key={news.title}
+                    newsImage={news.media}
                     title={news.title}
-                    description={news.description}
-                    date={news.date}
+                    description={news.excerpt}
+                    date={news.published_date}
                     author={news.author}
                   />
                 ))}
