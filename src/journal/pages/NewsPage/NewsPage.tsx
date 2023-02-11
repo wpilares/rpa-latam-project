@@ -5,11 +5,10 @@ import { useParams } from 'react-router-dom';
 
 export const NewsPage = (): ReactElement => {
   const { id } = useParams();
-  const ID = (id ?? '').toString();
   const [news, setNews] = useState<News[]>([]);
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      const articles = await getNews(ID, '1');
+      const articles = await getNews((id ?? '').toString(), '1');
       setNews(articles);
     };
     fetchData()
