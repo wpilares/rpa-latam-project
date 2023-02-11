@@ -1,5 +1,5 @@
 import { type ReactElement } from 'react';
-import '../../styles/footer.scss';
+import './footer.scss';
 
 export const Footer = (): ReactElement => {
   return (
