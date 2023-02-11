@@ -11,7 +11,7 @@
 .main {
   padding: 40px 16px;
   @include customMinBreakPoint(1024) {
-    padding: 40px 0;
+    padding: 60px 0;
   }
 
   .hero {
@@ -68,7 +68,7 @@
       min-height: 296px;
       margin: auto;
       @include customMinBreakPoint(1024) {
-        max-width: 600px;
+        min-width: 600px;
         margin: 0;
       }
     }

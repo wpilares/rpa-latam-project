@@ -10,7 +10,7 @@
   @include customMinBreakPoint(1024) {
     flex-direction: row;
     max-width: 474px;
-    max-height: 209px;
+    height: 209px;
   }
 
   &__image-content {
