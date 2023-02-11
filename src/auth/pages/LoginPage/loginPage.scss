@@ -1,0 +1,93 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.container {
+  background-image: url(/src/assets/login-background.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.wrapper-login {
+  padding: 32px 16px;
+  @include customMinBreakPoint(1024) {
+    padding: 32px 0;
+    max-width: 400px;
+    margin: auto;
+  }
+}
+
+.form {
+  background-color: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 16px;
+  @include customMinBreakPoint(1024) {
+    padding: 32px 24px;
+  }
+}
+
+.title-page {
+  font-size: 27px;
+  color: #9f0b22;
+  text-align: center;
+  font-family: 'DM Serif Display', serif;
+  & span {
+    color: #ffcb05;
+  }
+}
+
+.form-login {
+  &__header {
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 25px;
+    margin: 0;
+  }
+
+  &__description {
+    font-size: 12px;
+  }
+
+  &__field {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  &__input {
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+
+  &__submit {
+    border: none;
+    background-color: $navBarColor;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    padding: 9px;
+  }
+}
+
+.prompt__text {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.prompt__link {
+  margin-left: 5px;
+  color: $navBarColor;
+}
